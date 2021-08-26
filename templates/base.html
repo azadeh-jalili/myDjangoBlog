@@ -1,17 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>
         {% block title %}
-
+            article
         {% endblock %}
     </title>
+    <link rel="stylesheet" href=" {% static 'styles.css' %}">
+
 </head>
 <body>
-         {% block content %}
+<h2><a href="{% url 'myblog:list' %}"> LOGO</a></h2>
+{% block content %}
 
-        {% endblock %}
+{% endblock %}
 
 </body>
 </html>
