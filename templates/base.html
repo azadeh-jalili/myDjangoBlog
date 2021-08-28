@@ -14,36 +14,42 @@
 </head>
 <body>
 <h2><a href="{% url 'myblog:list' %}"> LOGO</a></h2>
-<nav>
-    <ul>
-        {% if user.is_authenticated %}
-            <li>
-                <form class="logout_link" action="{% url 'accounts:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit"> logout</button>
+<header>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li>
+                    <form class="logout_link" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"> logout</button>
 
-                </form>
-            </li>
-            <li>
-                <a href="{% url 'myblog:create' %}">create new article</a>
+                    </form>
+                </li>
+                <li>
+                    <a href="{% url 'myblog:create' %}">create new article</a>
 
-            </li>
-        {% else %}
-            <li>
-                <a href="{% url 'accounts:login' %}">login</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'accounts:login' %}">login</a>
 
-            </li>
+                </li>
 
-            <li>
-                <a href="{% url 'accounts:signup' %}">signup</a>
+                <li>
+                    <a href="{% url 'accounts:signup' %}">signup</a>
 
-            </li>
-        {% endif %}
-    </ul>
-</nav>
-{% block content %}
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<div class="wrapper">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+
+
+</div>
 
 </body>
 </html>
