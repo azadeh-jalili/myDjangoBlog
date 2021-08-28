@@ -16,13 +16,29 @@
 <h2><a href="{% url 'myblog:list' %}"> LOGO</a></h2>
 <nav>
     <ul>
-        <li>
-            <form class="logout_link" action="{% url 'accounts:logout' %}">
-                {% csrf_token %}
-                <button type="submit"> logout</button>
+        {% if user.is_authenticated %}
+            <li>
+                <form class="logout_link" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit"> logout</button>
 
-            </form>
-        </li>
+                </form>
+            </li>
+            <li>
+                <a href="{% url 'myblog:create' %}">create new article</a>
+
+            </li>
+        {% else %}
+            <li>
+                <a href="{% url 'accounts:login' %}">login</a>
+
+            </li>
+
+            <li>
+                <a href="{% url 'accounts:signup' %}">signup</a>
+
+            </li>
+        {% endif %}
     </ul>
 </nav>
 {% block content %}

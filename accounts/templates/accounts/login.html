@@ -5,6 +5,9 @@
     <form class="" action="{% url 'accounts:login' %}" method="post">
         {{ form }}
         {% csrf_token %}
+        {% if requset.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
         <input type="submit" value="login">
     </form>
 
